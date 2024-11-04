@@ -1,0 +1,169 @@
+#grid {
+  height: 100svh;
+  width: 100svh;
+}
+
+#status-bar * {
+  position: absolute;
+  line-height: 100%;
+  font-size: 10svh;
+}
+
+#N-level {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 6.5svh;
+}
+
+#stimuli-counter {
+  bottom: 4svh;
+  right: 4svh;
+}
+
+#engine-btn {
+  bottom: 4svh;
+  left: 4svh;
+}
+
+#confirm-btn {
+  display: grid;
+  place-items: center;
+  font-size: 7svh;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#confirm-btn:before {
+  content: "Spacebar to Match";
+}
+
+.results-icons td,
+.results-text {
+  color: white;
+  font-size: 8svh;
+  padding: 2svh;
+}
+
+.ct-label {
+  font-size: 6svh;
+}
+
+.btn-standard {
+  cursor: pointer;
+  font-size: 7svh;
+  min-width: 200px;
+  padding: 1svh 3svh;
+}
+
+.btn-popup {
+  width: 12svh;
+  height: 12svh;
+  font-size: 7svh;
+  cursor: pointer;
+}
+
+.btn-popup.normal {
+  top: 4svh;
+  right: 4svh;
+}
+
+.btn-popup.reflected {
+  top: 6svh;
+  left: 50%;
+  transform: translateX(10svh);
+}
+
+#navigation {
+  padding: 4svh;
+}
+
+.nav-item input,
+.nav-item select {
+  margin-bottom: 10px;
+}
+
+label[for="nav-trigger"] {
+  top: 4svh;
+  left: 4svh;
+  width: 10svh;
+  height: 10svh;
+}
+
+#nav-trigger:checked+label {
+  left: 67svh;
+}
+
+#nav-trigger:checked~#site-wrap {
+  left: 63svh;
+}
+
+#nav-trigger+label,
+#site-wrap {
+  transition: left 0.2s;
+}
+
+.nav-item label,
+.nav-item p,
+.nav-item .range-label {
+  width: 55svh;
+  color: white;
+  font-size: 5svh;
+  font-weight: 700;
+}
+
+.nav-item input,
+.nav-item select {
+  display: block;
+  width: 55svh!important;
+  font-size: 5svh;
+  border: 0;
+  border-radius: 4px;
+}
+
+input[type=range].slider::-webkit-slider-runnable-track,
+.nav-item input,
+.nav-item select {
+  height: 8svh;
+}
+
+input[type=range].slider::-webkit-slider-thumb {
+  height: 8svh;
+  width: 6svh;
+}
+
+@media (min-width:961px) {
+  .nav-item input,
+  .nav-item select {
+    margin-bottom: 8px;
+  }
+  #nav-trigger:checked+label {
+    left: 35svh;
+  }
+  #nav-trigger:checked~#site-wrap {
+    left: 31svh;
+  }
+  .nav-item label,
+  .nav-item p,
+  .nav-item .range-label {
+    width: 23svh;
+    font-size: 2.5svh;
+  }
+  .nav-item input,
+  .nav-item select {
+    width: 23svh!important;
+    font-size: 2.5svh;
+  }
+  input[type=range].slider::-webkit-slider-runnable-track,
+  .nav-item input,
+  .nav-item select {
+    height: 4svh;
+  }
+  input[type=range].slider::-webkit-slider-thumb {
+    height: 4svh;
+    width: 2.67svh;
+  }
+}
