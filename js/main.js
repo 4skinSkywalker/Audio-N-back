@@ -81,7 +81,7 @@ var environment = {
   // assigns to each HTML setting element a onChange function
   // which determines how that setting will influence game object variables
   initSettings: function() {
-    onChange("#set-sesion-time", function() {
+    onChange("#set-session-time", function() {
       var txt = $("#set-session-time").val();
       environment.time.elapsed = 0;
       environment.time.expected = Number(txt);
