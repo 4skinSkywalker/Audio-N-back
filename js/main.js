@@ -2,11 +2,10 @@ var _numbers = ["1.mp3", "2.mp3", "3.mp3", "4.mp3", "5.mp3", "6.mp3", "7.mp3", "
 var _letters = ["c.mp3", "h.mp3", "k.mp3", "l.mp3", "q.mp3", "r.mp3", "s.mp3", "t.mp3"]
 
 var environment = {
-
   name: "DNB_1.0.0.0", // name of the environment
   time: { // both measured in minutes
     elapsed: 0,
-    expected: 15
+    expected: Number($("#set-session-time").val())
   },
   history: {}, // collection of data
   sounds: {
@@ -82,6 +81,12 @@ var environment = {
   // assigns to each HTML setting element a onChange function
   // which determines how that setting will influence game object variables
   initSettings: function() {
+    onChange("#set-sesion-time", function() {
+      var txt = $("#set-session-time").val();
+      environment.time.elapsed = 0;
+      environment.time.expected = Number(txt);
+      $("#set-session-time-span").text(txt + "s");
+    });
     onChange("#set-time", function() {
       var txt = $("#set-time").val();
       game.time = Number(txt);
