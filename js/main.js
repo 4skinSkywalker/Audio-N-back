@@ -85,7 +85,8 @@ var environment = {
       var txt = $("#set-session-time").val();
       environment.time.elapsed = 0;
       environment.time.expected = Number(txt);
-      $("#set-session-time-span").text(txt + "s");
+      $("#session-time-indicator").text(environment.time.expected + "m");
+      $("#set-session-time-span").text(txt + "m");
     });
     onChange("#set-time", function() {
       var txt = $("#set-time").val();
