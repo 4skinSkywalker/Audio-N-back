@@ -93,27 +93,27 @@ function makePlaybleSounds(arrSounds, dirSounds) {
 
 // produces the number of stimuli
 // changes the text of #stimuli-counter
-function calculateStimuli(n, clues) {
-  var stimuli = 2 * n * clues;
+function calculateStimuli(n, cues) {
+  var stimuli = 2 * n * cues;
   $("#stimuli-counter").text(stimuli);
   return stimuli;
 };
 
-function prepareBlock(n, stimuli, clues) {
+function prepareBlock(n, stimuli, cues) {
 
   // makes an array, also called block, made of empty elements
   // [num_code_for_position, num_code_for_sound]
   var block = [];
   for (var i = 0; i < stimuli; i++) block.push([0, 0]);
 
-  // introduces matching stimuli, also called clues, inside the block
+  // introduces matching stimuli, also called cues, inside the block
   function rightAmountOf(stimulus_name) {
     var el = (stimulus_name === "positions") ? 0 : 1;
     var rnd = () => (el === 1)
       ? 1 + Math.floor(Math.random() * 8)
       : 4 + Math.floor(Math.random() * 3);
     var target, amount = 0;
-    while (amount < clues) {
+    while (amount < cues) {
       target = Math.floor(Math.random() * block.length);
       if (block[target + n]) {
         if (block[target][el] === 0 && block[target + n][el] === 0) {
@@ -170,23 +170,23 @@ function prepareBlock(n, stimuli, clues) {
 
 // isValidBlock helps makeBlock
 // to establish if the block made from prepareBlock
-// is made of the same amount of clues for both position and sound
-function isValidBlock(block, n, clues) {
+// is made of the same amount of cues for both position and sound
+function isValidBlock(block, n, cues) {
   var positions = 0, sounds = 0;
   for (var i = 0; i < block.length; i++)
     if (block[i - n]) {
       if (block[i][0] === block[i - n][0]) positions++;
       if (block[i][1] === block[i - n][1]) sounds++;
     }
-  return (positions === sounds && positions === clues);
+  return (positions === sounds && positions === cues);
 };
 
 // returns a ready-to-play block for the game object
-function makeBlock(n, stimuli, clues) {
+function makeBlock(n, stimuli, cues) {
   var block;
   do {
-    block = prepareBlock(n, stimuli, clues);
-  } while (!isValidBlock(block, n, clues))
+    block = prepareBlock(n, stimuli, cues);
+  } while (!isValidBlock(block, n, cues))
   return block;
 };
 // block-building-fns end
@@ -207,10 +207,6 @@ function judgeResults(correctSounds, missedSounds, wrongSounds, numOfMatchingSti
     }
   
     if (missedSounds / numOfMatchingStimuli > game.levelDownB / 100) {
-      return 0;
-    }
-  
-    if ((wrongSounds + missedSounds) / numOfMatchingStimuli > game.levelDownC / 100) {
       return 0;
     }
   }

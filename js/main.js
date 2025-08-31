@@ -94,14 +94,19 @@ var environment = {
       game.time = Number(txt);
       $("#set-time-span").text((txt / 1000) + "s");
     });
+    onChange("#set-max-rnd-delay", function() {
+      var txt = $("#set-max-rnd-delay").val();
+      game.maxRandomDelay = Number(txt);
+      $("#set-max-rnd-delay-span").text(txt + "ms");
+    });
     onChange("#dynamic-delay", function() {
       game.dynamicDelay = Number($("#dynamic-delay").val());
       $("#dynamic-delay-span").text(game.dynamicDelay === 1 ? "on" : "off");
     });
-    onChange("#set-clues", function() {
+    onChange("#set-cues", function() {
       game.updateParameters();
-      var txt = $("#set-clues").val();
-      $("#set-clues-span").text(txt);
+      var txt = $("#set-cues").val();
+      $("#set-cues-span").text(txt);
     });
     onChange("#set-level", function() {
       game.updateParameters();
@@ -123,22 +128,17 @@ var environment = {
     onChange("#level-up-threshold", function() {
       game.updateParameters();
       var txt = $("#level-up-threshold").val();
-      $("#level-up-threshold-span").text(txt + "% correct");
+      $("#level-up-threshold-span").text(txt + "%");
     });
     onChange("#level-down-a", function() {
       game.updateParameters();
       var txt = $("#level-down-a").val();
-      $("#level-down-a-span").text(txt + "% error");
+      $("#level-down-a-span").text(txt + "%");
     });
     onChange("#level-down-b", function() {
       game.updateParameters();
       var txt = $("#level-down-b").val();
-      $("#level-down-b-span").text(txt + "% error");
-    });
-    onChange("#level-down-c", function() {
-      game.updateParameters();
-      var txt = $("#level-down-c").val();
-      $("#level-down-c-span").text(txt + "% error");
+      $("#level-down-b-span").text(txt + "%");
     });
 
     // appends sounds keys of environment.sound to #select-sound

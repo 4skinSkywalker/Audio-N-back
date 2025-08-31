@@ -39,12 +39,12 @@ var game = {
   updateParameters: function(init) {
 
     this.time = Number($("#set-time").val());
-    this.clues = Number($("#set-clues").val());
+    this.maxRndDelay = Number($("#set-max-rnd-delay").val());
+    this.cues = Number($("#set-cues").val());
 
     this.levelUpThreshold = Number($("#level-up-threshold").val());
     this.levelDownA = Number($("#level-down-a").val());
     this.levelDownB = Number($("#level-down-b").val());
-    this.levelDownC = Number($("#level-down-c").val());
 
     // if the game is initializing, then try to retrieve N from LS
     const defaultN = Number($("#set-level").val());
@@ -63,7 +63,7 @@ var game = {
     $("#set-level-span").text(this.n);
     $("#N-level").text("N = " + this.n);
     
-    this.stimuli = calculateStimuli(this.n, this.clues);
+    this.stimuli = calculateStimuli(this.n, this.cues);
     this.feedback = Number($("#feedback").val());
     this.levelUp = Number($("#level-up").val());
   },
@@ -114,7 +114,7 @@ var game = {
   // resets temporary variables used within playBlock
   reset: function(init) {
     this.updateParameters(init);
-    this.block = makeBlock(this.n, this.stimuli, this.clues);
+    this.block = makeBlock(this.n, this.stimuli, this.cues);
     this.prevScore = [0, 0, 0, 0, 0, 0];
     this.score = [0, 0, 0, 0, 0, 0];
     this.idx = -1;
@@ -184,8 +184,8 @@ var game = {
       $("#stimuli-counter").text(this.stimuli);
 
       const playSoundDelay = this.time + (this.playableSounds.averageDuration || 800);
-      const randomTime = Math.random() * (this.time / 4) * (Math.random() > 0.5 ? -1 : 1);
-      console.log("randomTime", randomTime);
+      const randomTime = Math.min(this.time - 100, Math.random() * this.maxRndDelay) * (Math.random() > 0.5 ? -1 : 1);
+      console.log("random time", randomTime);
       
       this.playing = setTimeout(
         this.playBlock.bind(this),
@@ -237,7 +237,7 @@ var game = {
 
     // decides what to do in each case of judgement
     // see judgeResults within functions.js to know more
-    switch (judgeResults(this.score[3], this.score[4], this.score[5], this.clues)) {
+    switch (judgeResults(this.score[3], this.score[4], this.score[5], this.cues)) {
       case 2:
         environment.saveStats(true);
         s += "<p class=\"results-text\">N is now: " + ++this.n + "</p>";
