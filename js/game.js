@@ -121,7 +121,7 @@ var game = {
     this.enable = [0, 0];
   },
 
-  // invoked when a user checks a clue using keys or buttons
+  // invoked when a user checks a cue using keys or buttons
   // this function, which works only during the gameplay
   // keeps track of the user's score
   // when feedback is set to 1 it also displays a visual feedback
@@ -144,7 +144,7 @@ var game = {
     }
   },
 
-  // invoked when a clue has been missed
+  // invoked when a cue has been missed
   // this function, which works only during the gameplay
   // keeps track of the user's score
   checkMissingInput: function(stimulus_name) {

@@ -137,7 +137,7 @@ function prepareBlock(n, stimuli, cues) {
 
   // fills a hole with a random stimulus
   //
-  // you have to pay attention that "a random stimulus" may be also a clue
+  // you have to pay attention that "a random stimulus" may be also a cue
   function fillHole(stimulus_name, idx) {
     var el = (stimulus_name === "position") ? 0 : 1;
     var rnd = () => (el === 1)
